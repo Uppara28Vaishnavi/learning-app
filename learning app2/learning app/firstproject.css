@@ -1,0 +1,102 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f5f5dc; /* Light cream color */
+}
+
+.header {
+  background-color: #333;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+/* Rest of your CSS styles */
+
+.logo h1 {
+  margin: 0;
+}
+.middle-content {
+  margin-top: 1px;
+  margin-left: 350px; /* Adjust the value to set the desired distance from the left side */
+}
+
+
+.navigation {
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+}
+
+.navigation ul {
+  list-style: none;
+  padding: 0;
+}
+
+.navigation ul li {
+  display: inline;
+  margin: 0 20px;
+}
+
+.navigation ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 16px;
+  transition: color 0.3s;
+}
+
+.navigation ul li a:hover {
+  color: #4caf50;
+}
+
+.auth-buttons .small-button {
+  padding: 8px 16px;
+  margin-left: 10px;
+  font-size: 14px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  height: 100vh;
+}
+
+.welcome-message {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.start-button {
+  padding: 15px 30px;
+  font-size: 18px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.language-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.round-button {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="levels.css">
+    <title>Level Selection - German</title>
+</head>
+
+<body>
+    <h1 id="language" style="font-size: larger;text-align: center;">Learn German</h1>
+    <div id="levelsContainer">
+        <button class="level-button" id="level1Button">Level 1</button>
+        <button class="level-button" id="level2Button">Level 2</button>
+        <button class="level-button" id="level3Button">Level 3</button>
+        <button class="level-button" id="level4Button">Level 4</button>
+        <button class="level-button" id="level5Button">Level 5</button>
+        <button class="level-button" id="level6Button">Level 6</button>
+    </div>
+
+    <div id="questionContainer" style="display: none;margin-top:80%;">
+        <h2>Questions</h2>
+        <div id="questions"></div>
+        <button id="submitBtn">Submit</button>
+        <p id="score"></p>
+    </div>
+
+    <script>
+        const level1Questions = [
+            {
+                question: "Was ist das deutsche Wort für 'Hund'?",
+                options: ["a) Katze", "b) Hund", "c) Fisch", "d) Vogel"],
+                answer: "b) Hund"
+            },
+            {
+                question: "Wählen Sie den korrekten Satz aus:",
+                options: ["a) Ich ist gehen.", "b) Du haben ein Buch.", "c) Er spielt Fußball.", "d) Sie machen Hausaufgaben."],
+                answer: "c) Er spielt Fußball."
+            },
+            {
+                question: "Welche der folgenden Farben ist eine Farbe?",
+                options: ["a) Rennen", "b) Blau", "c) Springen", "d) Schnell"],
+                answer: "b) Blau"
+            },
+            {
+                question: "Was bedeutet 'Hallo'?",
+                options: ["a) Auf Wiedersehen", "b) Danke", "c) Hallo", "d) Ja"],
+                answer: "c) Hallo"
+            },
+            {
+                question: "Füllen Sie die Lücke aus: Ich ___ ein Student.",
+                options: ["a) bin", "b) ist", "c) sind", "d) sein"],
+                answer: "a) bin"
+            },
+            {
+                question: "Was ist der Plural von 'Katze'?",
+                options: ["a) Katies", "b) Katzen", "c) Katzenz", "d) Katzenfisch"],
+                answer: "b) Katzen"
+            },
+            {
+                question: "Welches Wort bedeutet das Gegenteil von 'groß'?",
+                options: ["a) Klein", "b) Hoch", "c) Schnell", "d) Hell"],
+                answer: "a) Klein"
+            },
+            {
+                question: "Was ist das deutsche Wort für 'Haus'?",
+                options: ["a) Haus", "b) Auto", "c) Baum", "d) Schule"],
+                answer: "a) Haus"
+            },
+            {
+                question: "Wählen Sie den korrekten Satz aus:",
+                options: ["a) Wir kann singen.", "b) Sie kann tanzen.", "c) Ich kann lesen.", "d) Er kann nach Hause gehen."],
+                answer: "c) Ich kann lesen."
+            },
+            {
+                question: "Was ist die richtige Reihenfolge der Wörter in einer Frage?",
+                options: ["a) Subjekt - Verb - Objekt", "b) Objekt - Verb - Subjekt", "c) Verb - Subjekt - Objekt", "d) Subjekt - Objekt - Verb"],
+                answer: "a) Subjekt - Verb - Objekt"
+            }
+        ];
+
+        const level2Questions = [
+            {
+                question: "Was ist die Vergangenheitsform des Verbs 'essen'?",
+                options: ["a) Essend", "b) Aß", "c) Esst", "d) Isst"],
+                answer: "b) Aß"
+            },
+            {
+                question: "Wählen Sie den korrekten Satz aus:",
+                options: ["a) Wir haben einen Hund.", "b) Sie spielen im Park.", "c) Ich liest ein Buch.", "d) Du geht zur Schule."],
+                answer: "a) Wir haben einen Hund."
+            },
+            {
+                question: "Was ist das Gegenteil von 'glücklich'?",
+                options: ["a) Traurig", "b) Wütend", "c) Aufgeregt", "d) Freudig"],
+                answer: "a) Traurig"
+            },
+            {
+                question: "Füllen Sie die Lücke aus: Gestern ___ wir ins Kino.",
+                options: ["a) Geht", "b) Ging", "c) Gehen", "d) Gingen"],
+                answer: "d) Gingen"
+            },
+            {
+                question: "Welcher Satz steht im Präsens?",
+                options: ["a) Er wird ins Geschäft gehen.", "b) Sie spielt im Garten.", "c) Sie ging zum Zoo.", "d) Ich habe gestern ein Buch gelesen."],
+                answer: "b) Sie spielt im Garten."
+            },
+            {
+                question: "Was ist der Plural von 'Kind'?",
+                options: ["a) Kinder", "b) Kindes", "c) Kindies", "d) Kinden"],
+                answer: "a) Kinder"
+            },
+            {
+                question: "Wählen Sie den korrekten Satz aus:",
+                options: ["a) Ich kann das Lied spielen.", "b) Sie kann singen.", "c) Sie kann tanzen.", "d) Er kann gut schwimmen."],
+                answer: "a) Ich kann das Lied spielen."
+            },
+            {
+                question: "Was bedeutet 'Das ist mir egal'?",
+                options: ["a) Ich bin wütend.", "b) Ich bin glücklich.", "c) Es stört mich nicht.", "d) Es ist mir egal."],
+                answer: "c) Es stört mich nicht."
+            },
+            {
+                question: "Welches Wort ist ein Synonym für 'schnell'?",
+                options: ["a) Langsam", "b) Schnell", "c) Laut", "d) Schwer"],
+                answer: "b) Schnell"
+            },
+            {
+                question: "Was ist die richtige Reihenfolge der Wörter in einem negativen Satz?",
+                options: ["a) Subjekt - Verb - Objekt", "b) Verb - Objekt - Subjekt", "c) Subjekt - Objekt - Verb", "d) Subjekt - Hilfsverb - Nicht - Hauptverb"],
+                answer: "d) Subjekt - Hilfsverb - Nicht - Hauptverb"
+            }
+        ];
+
+        const questionContainer = document.getElementById("questionContainer");
+        const questionsDiv = document.getElementById("questions");
+        const submitBtn = document.getElementById("submitBtn");
+        const scoreDiv = document.getElementById("score");
+
+        document.getElementById("level1Button").addEventListener("click", function () {
+            displayQuestions(level1Questions);
+        });
+        document.getElementById("level2Button").addEventListener("click", function () {
+            displayQuestions(level2Questions);
+        });
+
+        function displayQuestions(questions) {
+            document.getElementById("language").style.display = "none";
+            document.getElementById("levelsContainer").style.display = "none";
+            questionContainer.style.display = "block";
+            let questionHTML = "";
+            questions.forEach((question, index) => {
+                questionHTML += `<div class="question">${question.question}</div>`;
+                question.options.forEach(option => {
+                    questionHTML += `<div class="option"><input type="radio" name="question${index}" value="${option}"> ${option}</div>`;
+                });
+                questionHTML += `<br>`;
+            });
+            questionsDiv.innerHTML = questionHTML;
+
+            submitBtn.addEventListener("click", function () {
+                calculateScore(questions);
+            });
+        }
+
+        function calculateScore(questions) {
+            let correctAnswers = 0;
+            questions.forEach((question, index) => {
+                const selectedAnswer = document.querySelector(`input[name=question${index}]:checked`);
+                if (selectedAnswer && selectedAnswer.value === question.answer) {
+                    correctAnswers++;
+                }
+            });
+            const score = `Your score: ${correctAnswers} out of ${questions.length}`;
+            scoreDiv.textContent = score;
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+/* Your existing CSS styles */
+body{
+    background-color: #f5f5dc;
+}
+/* Style for the rounded language boxes */
+.rounded-box {
+    flex: 1;
+
+    background-color: #4CAF50;
+    color: white;
+    border-radius: 15px; /* Adjust the border radius for the desired curve */
+    width: 300px;
+    height: auto;
+    text-align: center;
+    padding: 10px 20px;
+    margin: 10px;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a box shadow */
+
+}
+/* Your existing CSS styles */
+
+/* Style for the rounded language boxes */
+.rounded-box {
+    background-color: transparent; /* Set background color to transparent */
+    color: #4CAF50; /* Set text color */
+    border: 2px solid #4CAF50; /* Add border for the boxes */
+    border-radius: 15px; /* Adjust the border radius for the desired curve */
+    padding: 10px 20px;
+    margin: 10px;
+    display: inline-block;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Add a box shadow */
+}
+
+.rounded-box:hover {
+    background-color: #4CAF50;
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s, color 0.3s;
+}
+
+
+.language-buttons{
+    
+    padding: 50px;
+    display: flex;
+    justify-content: row;
+    justify-content: center;
+    align-items: center;
+}
+.flag{
+    width: 100px;
+    height: auto;
+}

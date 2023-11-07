@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="levels.css">
+    <title>Level Selection - Chinese</title>
+</head>
+
+<body>
+    <h1 id="language" style="font-size: larger;text-align: center;">Learn Chinese</h1>
+    <div id="levelsContainer">
+        <button class="level-button" id="level1Button">Level 1</button>
+        <button class="level-button" id="level2Button">Level 2</button>
+        <button class="level-button" id="level3Button">Level 3</button>
+        <button class="level-button" id="level4Button">Level 4</button>
+        <button class="level-button" id="level5Button">Level 5</button>
+        <button class="level-button" id="level6Button">Level 6</button>
+    </div>
+
+    <div id="questionContainer" style="display: none;margin-top:80%;">
+        <h2>Questions</h2>
+        <div id="questions"></div>
+        <button id="submitBtn">Submit</button>
+        <p id="score"></p>
+    </div>
+
+    <script>
+        const level1Questions = [
+    {
+        question: "What is the Chinese word for 'book'?",
+        options: ["a) 书 (Shū)", "b) 水 (Shuǐ)", "c) 人 (Rén)", "d) 车 (Chē)"],
+        answer: "a) 书 (Shū)"
+    },
+    {
+        question: "Which character means 'sun' in Chinese?",
+        options: ["a) 月 (Yuè)", "b) 日 (Rì)", "c) 水 (Shuǐ)", "d) 山 (Shān)"],
+        answer: "b) 日 (Rì)"
+    },
+    {
+        question: "What is the Chinese word for 'tree'?",
+        options: ["a) 花 (Huā)", "b) 山 (Shān)", "c) 石 (Shí)", "d) 树 (Shù)"],
+        answer: "d) 树 (Shù)"
+    },
+    {
+        question: "Which character represents the number 'three' in Chinese?",
+        options: ["a) 一 (Yī)", "b) 二 (Èr)", "c) 三 (Sān)", "d) 十 (Shí)"],
+        answer: "c) 三 (Sān)"
+    },
+    {
+        question: "What is the Chinese word for 'hello'?",
+        options: ["a) 你好 (Nǐ hǎo)", "b) 谢谢 (Xièxiè)", "c) 好吃 (Hǎochī)", "d) 对不起 (Duìbùqǐ)"],
+        answer: "a) 你好 (Nǐ hǎo)"
+    },
+    {
+        question: "Which character means 'water' in Chinese?",
+        options: ["a) 水", "b) 火", "c) 土", "d) 风"],
+        answer: "a) 水"
+    },
+    {
+        question: "What is the Chinese word for 'one'?",
+        options: ["a) 一 (Yī)", "b) 二 (Èr)", "c) 三 (Sān)", "d) 十 (Shí)"],
+        answer: "a) 一 (Yī)"
+    },
+    {
+        question: "What is the Chinese word for 'mother'?",
+        options: ["a) 爸爸 (Bàba)", "b) 妈妈 (Māmā)", "c) 哥哥 (Gēgē)", "d) 姐姐 (Jiějiě)"],
+        answer: "b) 妈妈 (Māmā)"
+    },
+    {
+        question: "Which character represents the number 'two' in Chinese?",
+        options: ["a) 一 (Yī)", "b) 二 (Èr)", "c) 三 (Sān)", "d) 十 (Shí)"],
+        answer: "b) 二 (Èr)"
+    },
+    {
+        question: "What is the Chinese word for 'goodbye'?",
+        options: ["a) 你好 (Nǐ hǎo)", "b) 谢谢 (Xièxiè)", "c) 再见 (Zàijiàn)", "d) 对不起 (Duìbùqǐ)"],
+        answer: "c) 再见 (Zàijiàn)"
+    }
+];
+
+
+const level2Questions = [
+    {
+        question: "Which sentence means 'I want to eat noodles'?",
+        options: ["a) 我喝水 (Wǒ hē shuǐ)", "b) 我吃米饭 (Wǒ chī mǐfàn)", "c) 我想吃面条 (Wǒ xiǎng chī miàntiáo)", "d) 他看书 (Tā kàn shū)"],
+        answer: "c) 我想吃面条 (Wǒ xiǎng chī miàntiáo)"
+    },
+    {
+        question: "What does '谢谢' (Xièxiè) mean in English?",
+        options: ["a) Hello", "b) Thank you", "c) Goodbye", "d) Sorry"],
+        answer: "b) Thank you"
+    },
+    {
+        question: "Which character represents the number 'five' in Chinese?",
+        options: ["a) 六", "b) 五", "c) 四", "d) 七"],
+        answer: "b) 五"
+    },
+    {
+        question: "What is the Chinese word for 'school'?",
+        options: ["a) 家 (Jiā)", "b) 商店 (Shāngdiàn)", "c) 医院 (Yīyuàn)", "d) 学校 (Xuéxiào)"],
+        answer: "d) 学校 (Xuéxiào)"
+    },
+    {
+        question: "Which sentence means 'She is reading a book'?",
+        options: ["a) 他在吃饭 (Tā zài chīfàn)", "b) 她在看书 (Tā zài kàn shū)", "c) 我在睡觉 (Wǒ zài shuìjiào)", "d) 你在喝水 (Nǐ zài hē shuǐ)"],
+        answer: "b) 她在看书 (Tā zài kàn shū)"
+    },
+    {
+        question: "What is the Chinese word for 'cat'?",
+        options: ["a) 狗 (Gǒu)", "b) 猫 (Māo)", "c) 鸟 (Niǎo)", "d) 老鼠 (Lǎoshǔ)"],
+        answer: "b) 猫 (Māo)"
+    },
+    {
+        question: "Which character means 'person' in Chinese?",
+        options: ["a) 狗 (Gǒu)", "b) 鸟 (Niǎo)", "c) 人 (Rén)", "d) 老鼠 (Lǎoshǔ)"],
+        answer: "c) 人 (Rén)"
+    },
+    {
+        question: "What is the Chinese word for 'computer'?",
+        options: ["a) 电视 (Diànshì)", "b) 电话 (Diànhuà)", "c) 电脑 (Diànnǎo)", "d) 冰箱 (Bīngxiāng)"],
+        answer: "c) 电脑 (Diànnǎo)"
+    },
+    {
+        question: "Which sentence means 'He likes to play soccer'?",
+        options: ["a) 她喜欢踢足球 (Tā xǐhuān tī zúqiú)", "b) 他喜欢打篮球 (Tā xǐhuān dǎ lánqiú)", "c) 他喜欢看电视 (Tā xǐhuān kàn diànshì)", "d) 她喜欢游泳 (Tā xǐhuān yóuyǒng)"],
+        answer: "a) 他喜欢踢足球 (Tā xǐhuān tī zúqiú)"
+    },
+    {
+        question: "What is the Chinese word for 'today'?",
+        options: ["a) 明天 (Míngtiān)", "b) 昨天 (Zuótiān)", "c) 今天 (Jīntiān)", "d) 外面 (Wàimiàn)"],
+        answer: "c) 今天 (Jīntiān)"
+    }
+];
+
+
+const level3Questions = [
+    {
+        question: "Which sentence means 'I want to eat noodles'?",
+        options: ["a) 我喝水 (Wǒ hē shuǐ)", "b) 我吃米饭 (Wǒ chī mǐfàn)", "c) 我想吃面条 (Wǒ xiǎng chī miàntiáo)", "d) 他看书 (Tā kàn shū)"],
+        answer: "c) 我想吃面条 (Wǒ xiǎng chī miàntiáo)"
+    },
+    {
+        question: "What does '谢谢' (Xièxiè) mean in English?",
+        options: ["a) Hello", "b) Thank you", "c) Goodbye", "d) Sorry"],
+        answer: "b) Thank you"
+    },
+    {
+        question: "Which character represents the number 'five' in Chinese?",
+        options: ["a) 六", "b) 五", "c) 四", "d) 七"],
+        answer: "b) 五"
+    },
+    {
+        question: "What is the Chinese word for 'school'?",
+        options: ["a) 家 (Jiā)", "b) 商店 (Shāngdiàn)", "c) 医院 (Yīyuàn)", "d) 学校 (Xuéxiào)"],
+        answer: "d) 学校 (Xuéxiào)"
+    },
+    {
+        question: "Which sentence means 'She is reading a book'?",
+        options: ["a) 他在吃饭 (Tā zài chīfàn)", "b) 她在看书 (Tā zài kàn shū)", "c) 我在睡觉 (Wǒ zài shuìjiào)", "d) 你在喝水 (Nǐ zài hē shuǐ)"],
+        answer: "b) 她在看书 (Tā zài kàn shū)"
+    },
+    {
+        question: "What is the Chinese word for 'cat'?",
+        options: ["a) 狗 (Gǒu)", "b) 猫 (Māo)", "c) 鸟 (Niǎo)", "d) 老鼠 (Lǎoshǔ)"],
+        answer: "b) 猫 (Māo)"
+    },
+    {
+        question: "Which character means 'person' in Chinese?",
+        options: ["a) 狗 (Gǒu)", "b) 鸟 (Niǎo)", "c) 人 (Rén)", "d) 老鼠 (Lǎoshǔ)"],
+        answer: "c) 人 (Rén)"
+    },
+    {
+        question: "What is the Chinese word for 'computer'?",
+        options: ["a) 电视 (Diànshì)", "b) 电话 (Diànhuà)", "c) 电脑 (Diànnǎo)", "d) 冰箱 (Bīngxiāng)"],
+        answer: "c) 电脑 (Diànnǎo)"
+    },
+    {
+        question: "Which sentence means 'He likes to play soccer'?",
+        options: ["a) 她喜欢踢足球 (Tā xǐhuān tī zúqiú)", "b) 他喜欢打篮球 (Tā xǐhuān dǎ lánqiú)", "c) 他喜欢看电视 (Tā xǐhuān kàn diànshì)", "d) 她喜欢游泳 (Tā xǐhuān yóuyǒng)"],
+        answer: "a) 他喜欢踢足球 (Tā xǐhuān tī zúqiú)"
+    },
+    {
+        question: "What is the Chinese word for 'today'?",
+        options: ["a) 明天 (Míngtiān)", "b) 昨天 (Zuótiān)", "c) 今天 (Jīntiān)", "d) 外面 (Wàimiàn)"],
+        answer: "c) 今天 (Jīntiān)"
+    }
+];
+
+  
+const questionContainer = document.getElementById("questionContainer");
+        const questionsDiv = document.getElementById("questions");
+        const submitBtn = document.getElementById("submitBtn");
+        const scoreDiv = document.getElementById("score");
+
+        document.getElementById("level1Button").addEventListener("click", function () {
+            displayQuestions(level1Questions);
+        });
+        document.getElementById("level2Button").addEventListener("click", function () {
+            displayQuestions(level2Questions);
+        });
+        
+        function displayQuestions(questions) {
+         document.getElementById("language").style.display = "none";
+         document.getElementById("levelsContainer").style.display = "none";
+         questionContainer.style.display = "block";
+         
+         let questionHTML = "";
+          questions.forEach((question, index) => {
+          questionHTML += `<div class="question">${question.question}</div>`;
+          question.options.forEach(option => {
+            questionHTML += `<div class="option"><input type="radio" name="question${index}" value="${option}"> ${option}</div>`;
+        });
+        questionHTML += `<br>`;
+    });
+    questionsDiv.innerHTML = questionHTML;
+    submitBtn.addEventListener("click", function () {
+            calculateScore(questions);
+        });
+}
+function calculateScore(questions) {
+            let correctAnswers = 0;
+            questions.forEach((question, index) => {
+                const selectedAnswer = document.querySelector(`input[name=question${index}]:checked`);
+                if (selectedAnswer && selectedAnswer.value === question.answer) {
+                    correctAnswers++;
+                }
+            });
+            const score = `Your score: ${correctAnswers} out of ${questions.length}`;
+            scoreDiv.textContent = score;
+        }
+
+        
+
+        
+    </script>
+</body>
+
+</html>

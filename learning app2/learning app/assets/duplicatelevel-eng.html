@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="levels.css">
+    <title>Level Selection</title>
+</head>
+
+<body>
+    <h1 style="font-size: larger;text-align: center;">Learn English</h1>
+    <div id="levelsContainer">
+        <button class="level-button" id="level1Button">Level 1</button>
+    </div>
+
+    <div id="questionContainer" style="display: none;">
+        <h2>Questions</h2>
+        <div id="questions"></div>
+        <button id="submitBtn">Submit</button>
+        <p id="score"></p>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "What is the English word for 'chien' in French?",
+                options: ["a) Cat", "b) Dog", "c) Fish", "d) Bird"],
+                answer: "b) Dog"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) She is goes to school.", "b) He am play in the park.", "c) I am reading a book.", "d) They are do homework."],
+                answer: "c) I am reading a book."
+            },
+            {
+                question: "Which of the following is a color?",
+                options: ["a) Run", "b) Blue", "c) Jump", "d) Fast"],
+                answer: "b) Blue"
+            },
+            {
+                question: "What does 'hello' mean?",
+                options: ["a) Goodbye", "b) Thank you", "c) Hello", "d) Yes"],
+                answer: "c) Hello"
+            },
+            {
+                question: "Fill in the blank: I ___ a student.",
+                options: ["a) am", "b) is", "c) are", "d) be"],
+                answer: "a) am"
+            },
+            {
+                question: "What is the plural of 'cat'?",
+                options: ["a) Caties", "b) Cats", "c) Catz", "d) Catfish"],
+                answer: "b) Cats"
+            },
+            {
+                question: "Which word means the opposite of 'big'?",
+                options: ["a) Small", "b) Tall", "c) Fast", "d) Bright"],
+                answer: "a) Small"
+            },
+            {
+                question: "What is the English word for 'maison' in French?",
+                options: ["a) House", "b) Car", "c) Tree", "d) School"],
+                answer: "a) House"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) He can sings well.", "b) She can to dance.", "c) They can play soccer.", "d) I can goes home."],
+                answer: "c) They can play soccer."
+            },
+            {
+                question: "What is the correct order of words in a question?",
+                options: ["a) Subject - Verb - Object", "b) Object - Verb - Subject", "c) Verb - Subject - Object", "d) Subject - Object - Verb"],
+                answer: "c) Verb - Subject - Object"
+            }
+        ];
+
+        const questionContainer = document.getElementById("questionContainer");
+        const questionsDiv = document.getElementById("questions");
+        const submitBtn = document.getElementById("submitBtn");
+        const scoreDiv = document.getElementById("score");
+
+        document.getElementById("level1Button").addEventListener("click", function () {
+            displayQuestions();
+        });
+
+        function displayQuestions() {
+            questionContainer.style.display = "block";
+            let questionHTML = "";
+            questions.forEach((question, index) => {
+                questionHTML += `<div>${question.question}</div>`;
+                question.options.forEach(option => {
+                    questionHTML += `<input type="radio" name="question${index}" value="${option}"> ${option}<br>`;
+                });
+                questionHTML += `<br>`;
+            });
+            questionsDiv.innerHTML = questionHTML;
+        }
+
+        submitBtn.addEventListener("click", function () {
+            calculateScore();
+        });
+
+        function calculateScore() {
+            let correctAnswers = 0;
+            questions.forEach((question, index) => {
+                const selectedAnswer = document.querySelector(`input[name=question${index}]:checked`);
+                if (selectedAnswer && selectedAnswer.value === question.answer) {
+                    correctAnswers++;
+                }
+            });
+            const score = `Your score: ${correctAnswers} out of ${questions.length}`;
+            scoreDiv.textContent = score;
+        }
+    </script>
+</body>
+
+</html>
+

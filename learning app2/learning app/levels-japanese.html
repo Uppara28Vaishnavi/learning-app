@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="levels.css">
+    <title>Level Selection - Japanese</title>
+</head>
+
+<body>
+    <h1 id="language" style="font-size: larger;text-align: center;">Learn Japanese</h1>
+    <div id="levelsContainer">
+        <button class="level-button" id="level1Button">Level 1</button>
+        <button class="level-button" id="level2Button">Level 2</button>
+        <button class="level-button" id="level3Button">Level 3</button>
+        <button class="level-button" id="level4Button">Level 4</button>
+        <button class="level-button" id="level5Button">Level 5</button>
+        <button class="level-button" id="level6Button">Level 6</button>
+    </div>
+
+    <div id="questionContainer" style="display: none;margin-top:100%;">
+        <h2>Questions</h2>
+        <div id="questions"></div>
+        <button id="submitBtn">Submit</button>
+        <p id="score"></p>
+    </div>
+
+    <script>
+        const level1Questions = [
+            {
+                question: "犬の日本語の意味は何ですか？",
+                options: ["a) 犬", "b) 猫", "c) 鳥", "d) 魚"],
+                answer: "a) 犬"
+            },
+            {
+                question: "正しい文を選んでください：",
+                options: ["a) 彼は学校に行きます。", "b) 彼女は映画を見ます。", "c) 私たちは遊びます。", "d) 彼らは寝ています。"],
+                answer: "a) 彼は学校に行きます。"
+            },
+            {
+                question: "次のうち、色の言葉はどれですか？",
+                options: ["a) 走る", "b) 青", "c) 飛ぶ", "d) 速い"],
+                answer: "b) 青"
+            },
+            {
+                question: "「こんにちは」という言葉は何を意味しますか？",
+                options: ["a) さようなら", "b) ありがとう", "c) こんにちは", "d) はい"],
+                answer: "c) こんにちは"
+            },
+            {
+                question: "空白を埋めてください：私は___学生です。",
+                options: ["a) です", "b) は", "c) が", "d) で"],
+                answer: "a) です"
+            },
+            {
+                question: "「猫」の複数形は何ですか？",
+                options: ["a) 猫", "b) 猫達", "c) 猫たち", "d) 猫の"],
+                answer: "c) 猫たち"
+            },
+            {
+                question: "「大きい」という言葉の反対は何ですか？",
+                options: ["a) 小さい", "b) 高い", "c) 速い", "d) 明るい"],
+                answer: "a) 小さい"
+            },
+            {
+                question: "「電話」の日本語の意味は何ですか？",
+                options: ["a) 車", "b) 時計", "c) 電話", "d) 本"],
+                answer: "c) 電話"
+            },
+            {
+                question: "正しい文を選んでください：",
+                options: ["a) 彼女は歌を歌います。", "b) 彼は踊ります。", "c) 彼らはサッカーをします。", "d) 私は家に行きます。"],
+                answer: "a) 彼女は歌を歌います。"
+            },
+            {
+                question: "質問文の正しい単語の順番は何ですか？",
+                options: ["a) 主語 - 動詞 - 目的語", "b) 目的語 - 動詞 - 主語", "c) 動詞 - 主語 - 目的語", "d) 主語 - 目的語 - 動詞"],
+                answer: "a) 主語 - 動詞 - 目的語"
+            }
+        ];
+
+        const level2Questions = [
+            {
+                question: "「食べる」という動詞の過去形は何ですか？",
+                options: ["a) 食べている", "b) 食べます", "c) 食べた", "d) 食べる"],
+                answer: "c) 食べた"
+            },
+            {
+                question: "正しい文を選んでください：",
+                options: ["a) 彼女はコーヒーを好きです。", "b) 彼らはアイスクリームを好きです。", "c) 私は車を持っています。", "d) 彼らは犬を持っています。"],
+                answer: "a) 彼女はコーヒーを好きです。"
+            },
+            {
+                question: "「悲しい」という言葉の反対は何ですか？",
+                options: ["a) 幸せ", "b) 怒っている", "c) 興奮している", "d) 嬉しい"],
+                answer: "a) 幸せ"
+            },
+            {
+                question: "空白を埋めてください：私たちは先週末___ビーチに行きました。",
+                options: ["a) 行く", "b) 行っている", "c) 行きます", "d) 行った"],
+                answer: "d) 行った"
+            },
+            {
+                question: "次のうち、現在進行形の文はどれですか？",
+                options: ["a) 彼は店に行きます。", "b) 彼女は庭で遊んでいます。", "c) 彼らは動物園に行きました。", "d) 昨日、私は本を読みました。"],
+                answer: "b) 彼女は庭で遊んでいます。"
+            },
+            {
+                question: "「子供」という単語の複数形は何ですか？",
+                options: ["a) 子供", "b) 子供達", "c) 子供の", "d) 子供たち"],
+                answer: "d) 子供たち"
+            },
+            {
+                question: "正しい文を選んでください：",
+                options: ["a) 私はギターを弾けます。", "b) 彼女は歌います。", "c) 彼らは踊れます。", "d) 彼は良く泳げます。"],
+                answer: "c) 彼らは踊れます。"
+            },
+            {
+                question: "「気にしない」という言葉の意味は何ですか？",
+                options: ["a) 怒っている。", "b) 幸せ。", "c) それは私を悩ませません。", "d) 私は気にしない。"],
+                answer: "c) それは私を悩ませません。"
+            },
+            {
+                question: "「速い」という言葉の類義語は何ですか？",
+                options: ["a) 遅い", "b) 速い", "c) 大声で", "d) 重い"],
+                answer: "b) 速い"
+            },
+            {
+                question: "否定文の正しい単語の順番は何ですか？",
+                options: ["a) 主語 - 動詞 - 目的語", "b) 動詞 - 目的語 - 主語", "c) 主語 - 目的語 - 動詞", "d) 主語 - 助動詞 - ない - 主要動詞"],
+                answer: "d) 主語 - 助動詞 - ない - 主要動詞"
+            }
+        ];
+
+        const questionContainer = document.getElementById("questionContainer");
+        const questionsDiv = document.getElementById("questions");
+        const submitBtn = document.getElementById("submitBtn");
+        const scoreDiv = document.getElementById("score");
+
+        document.getElementById("level1Button").addEventListener("click", function () {
+            displayQuestions(level1Questions);
+        });
+        document.getElementById("level2Button").addEventListener("click", function () {
+            displayQuestions(level2Questions);
+        });
+
+        function displayQuestions(questions) {
+            document.getElementById("language").style.display = "none";
+            document.getElementById("levelsContainer").style.display = "none";
+            questionContainer.style.display = "block";
+            let questionHTML = "";
+            questions.forEach((question, index) => {
+                questionHTML += `<div class="question">${question.question}</div>`;
+                question.options.forEach(option => {
+                    questionHTML += `<div class="option"><input type="radio" name="question${index}" value="${option}"> ${option}</div>`;
+                });
+                questionHTML += `<br>`;
+            });
+            questionsDiv.innerHTML = questionHTML;
+
+            submitBtn.addEventListener("click", function () {
+                calculateScore(questions);
+            });
+        }
+
+        function calculateScore(questions) {
+            let correctAnswers = 0;
+            questions.forEach((question, index) => {
+                const selectedAnswer = document.querySelector(`input[name=question${index}]:checked`);
+                if (selectedAnswer && selectedAnswer.value === question.answer) {
+                    correctAnswers++;
+                }
+            });
+            const score = `Your score: ${correctAnswers} out of ${questions.length}`;
+            scoreDiv.textContent = score;
+        }
+    </script>
+</body>
+
+</html>

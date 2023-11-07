@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="levels.css">
+    <title>Level Selection - Spanish</title>
+</head>
+
+<body>
+    <h1 id="language" style="font-size: larger;text-align: center;">Learn Spanish</h1>
+    <div id="levelsContainer">
+        <button class="level-button" id="level1Button">Level 1</button>
+        <button class="level-button" id="level2Button">Level 2</button>
+        <button class="level-button" id="level3Button">Level 3</button>
+        <button class="level-button" id="level4Button">Level 4</button>
+        <button class="level-button" id="level5Button">Level 5</button>
+        <button class="level-button" id="level6Button">Level 6</button>
+    </div>
+
+    <div id="questionContainer" style="display: none;margin-top:80%;">
+        <h2>Questions</h2>
+        <div id="questions"></div>
+        <button id="submitBtn">Submit</button>
+        <p id="score"></p>
+    </div>
+
+    <script>
+        const level1Questions = [
+            {
+                question: "What is the Spanish word for 'cat'?",
+                options: ["a) Gato", "b) Perro", "c) Pájaro", "d) Pez"],
+                answer: "a) Gato"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) Yo tener un gato.", "b) Tú escribe una carta.", "c) Ella lee un libro.", "d) Nosotros cantan en el coche."],
+                answer: "c) Ella lee un libro."
+            },
+            {
+                question: "Which of the following is a color in Spanish?",
+                options: ["a) Run", "b) Azul", "c) Jump", "d) Fast"],
+                answer: "b) Azul"
+            },
+            {
+                question: "What does 'hola' mean?",
+                options: ["a) Goodbye", "b) Thank you", "c) Hello", "d) Yes"],
+                answer: "c) Hello"
+            },
+            {
+                question: "Fill in the blank: Yo ___ un estudiante.",
+                options: ["a) soy", "b) eres", "c) es", "d) somos"],
+                answer: "a) soy"
+            },
+            {
+                question: "What is the plural of 'perro'?",
+                options: ["a) Perres", "b) Peros", "c) Perros", "d) Perroes"],
+                answer: "c) Perros"
+            },
+            {
+                question: "Which word means the opposite of 'pequeño'?",
+                options: ["a) Grande", "b) Alto", "c) Rápido", "d) Brillante"],
+                answer: "a) Grande"
+            },
+            {
+                question: "What is the Spanish word for 'casa'?",
+                options: ["a) House", "b) Carro", "c) Árbol", "d) Casa"],
+                answer: "d) Casa"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) Él puede bailar.", "b) Ella pueden cantar.", "c) Nosotros puede nadar.", "d) Ellos puede correr."],
+                answer: "a) Él puede bailar."
+            },
+            {
+                question: "What is the correct order of words in a question in Spanish?",
+                options: ["a) Subject - Verb - Object", "b) Object - Verb - Subject", "c) Verb - Subject - Object", "d) Subject - Object - Verb"],
+                answer: "c) Verb - Subject - Object"
+            }
+        ];
+
+        const level2Questions = [
+            {
+                question: "What is the past tense of the verb 'comer'?",
+                options: ["a) Comiendo", "b) Comió", "c) Comen", "d) Come"],
+                answer: "b) Comió"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) Nosotros no gusta el chocolate.", "b) Él gusta nadar.", "c) Yo gusta leer libros.", "d) Ellos gusta jugar al fútbol."],
+                answer: "b) Él gusta nadar."
+            },
+            {
+                question: "What is the opposite of the word 'frío'?",
+                options: ["a) Calor", "b) Congelado", "c) Templado", "d) Helado"],
+                answer: "a) Calor"
+            },
+            {
+                question: "Fill in the blank: Ella ___ al cine ayer.",
+                options: ["a) Va", "b) Fue", "c) Irá", "d) Va a ir"],
+                answer: "b) Fue"
+            },
+            {
+                question: "Which sentence is in the future tense?",
+                options: ["a) Ellos miraron la televisión.", "b) Nosotros comimos pizza.", "c) Tú comes manzanas.", "d) Yo comeré una pizza mañana."],
+                answer: "d) Yo comeré una pizza mañana."
+            },
+            {
+                question: "What is the plural of 'chico'?",
+                options: ["a) Chico", "b) Chicos", "c) Chic", "d) Chiques"],
+                answer: "b) Chicos"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) Yo puede hablar inglés.", "b) Ella pueden bailar.", "c) Nosotros podemos cantar.", "d) Ellos pueden nadar."],
+                answer: "c) Nosotros podemos cantar."
+            },
+            {
+                question: "What does 'adiós' mean?",
+                options: ["a) Hello", "b) Goodbye", "c) Thank you", "d) Yes"],
+                answer: "b) Goodbye"
+            },
+            {
+                question: "Which word is a synonym for 'bonito'?",
+                options: ["a) Pequeño", "b) Grande", "c) Feo", "d) Hermoso"],
+                answer: "d) Hermoso"
+            },
+            {
+                question: "What is the correct order of words in a negative sentence in Spanish?",
+                options: ["a) Subject - Verb - Object", "b) Verb - Object - Subject", "c) Subject - Object - Verb", "d) Subject - No - Verb - Object"],
+                answer: "d) Subject - No - Verb - Object"
+            }
+        ];
+
+        const level3Questions = [
+            {
+                question: "Which sentence uses the correct subjunctive mood?",
+                options: ["a) Quiero que él va al cine.", "b) Es necesario que ella terminará su trabajo.", "c) Dudamos que él está aquí.", "d) Creemos que él irá al mercado."],
+                answer: "c) Dudamos que él está aquí."
+            },
+            {
+                question: "Choose the correct sentence with the conditional tense:",
+                options: ["a) Comerá una manzana.", "b) Ella come una manzana.", "c) Comería una manzana.", "d) Ellos comen una manzana."],
+                answer: "c) Comería una manzana."
+            },
+            {
+                question: "What is the meaning of the idiom 'costar un ojo de la cara'?",
+                options: ["a) To be affordable", "b) To be expensive", "c) To cost an arm and a leg", "d) To be priceless"],
+                answer: "c) To cost an arm and a leg"
+            },
+            {
+                question: "Choose the correct phrasal verb to complete the sentence: Ella ___ su coche viejo.",
+                options: ["a) Give out", "b) Give away", "c) Give off", "d) Give up"],
+                answer: "b) Give away"
+            },
+            {
+                question: "Which sentence is in the passive voice?",
+                options: ["a) Comió el pastel.", "b) Ella escribió la carta.", "c) El libro fue leído por María.", "d) Vimos la película."],
+                answer: "c) El libro fue leído por María."
+            },
+            {
+                question: "What is the correct plural form of 'niño'?",
+                options: ["a) Niñoes", "b) Niñitos", "c) Niños", "d) Niñe"],
+                answer: "c) Niños"
+            },
+            {
+                question: "Choose the correct sentence with reflexive verbs: Ellos se ___ cada mañana.",
+                options: ["a) Levantar", "b) Levanta", "c) Levantan", "d) Levantan"],
+                answer: "a) Levantar"
+            },
+            {
+                question: "What is the meaning of the word 'encantador'?",
+                options: ["a) Boring", "b) Charming", "c) Ugly", "d) Confusing"],
+                answer: "b) Charming"
+            },
+            {
+                question: "Which sentence is correct with the subjunctive mood?",
+                options: ["a) Creo que él vendrá.", "b) Es necesario que ella canta.", "c) Vamos al cine.", "d) Ella comió el pastel."],
+                answer: "b) Es necesario que ella canta."
+            },
+            {
+                question: "What is the correct order of words in a negative sentence with reflexive verbs in Spanish?",
+                options: ["a) Subject - Verb - Reflexive Pronoun - No - Object", "b) Subject - No - Reflexive Pronoun - Verb - Object", "c) Subject - Reflexive Pronoun - No - Verb - Object", "d) Subject - Reflexive Pronoun - Verb - No - Object"],
+                answer: "d) Subject - Reflexive Pronoun - Verb - No - Object"
+            }
+        ];
+  
+        const questionContainer = document.getElementById("questionContainer");
+        const questionsDiv = document.getElementById("questions");
+        const submitBtn = document.getElementById("submitBtn");
+        const scoreDiv = document.getElementById("score");
+
+        document.getElementById("level1Button").addEventListener("click", function () {
+            displayQuestions(level1Questions);
+        });
+        document.getElementById("level2Button").addEventListener("click", function () {
+            displayQuestions(level2Questions);
+        });
+        
+        function displayQuestions(questions) {
+         document.getElementById("language").style.display = "none";
+         document.getElementById("levelsContainer").style.display = "none";
+         questionContainer.style.display = "block";
+         
+         let questionHTML = "";
+          questions.forEach((question, index) => {
+          questionHTML += `<div class="question">${question.question}</div>`;
+          question.options.forEach(option => {
+            questionHTML += `<div class="option"><input type="radio" name="question${index}" value="${option}"> ${option}</div>`;
+        });
+        questionHTML += `<br>`;
+    });
+    questionsDiv.innerHTML = questionHTML;
+    submitBtn.addEventListener("click", function () {
+            calculateScore(questions);
+        });
+}
+function calculateScore(questions) {
+            let correctAnswers = 0;
+            questions.forEach((question, index) => {
+                const selectedAnswer = document.querySelector(`input[name=question${index}]:checked`);
+                if (selectedAnswer && selectedAnswer.value === question.answer) {
+                    correctAnswers++;
+                }
+            });
+            const score = `Your score: ${correctAnswers} out of ${questions.length}`;
+            scoreDiv.textContent = score;
+        }
+
+        
+
+        
+    </script>
+</body>
+
+</html>

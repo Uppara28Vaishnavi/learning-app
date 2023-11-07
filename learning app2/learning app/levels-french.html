@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="levels.css">
+    <title>Level Selection - French</title>
+</head>
+
+<body>
+    <h1 id="language" style="font-size: larger;text-align: center;">Learn French</h1>
+    <div id="levelsContainer">
+        <button class="level-button" id="level1Button">Level 1</button>
+        <button class="level-button" id="level2Button">Level 2</button>
+        <button class="level-button" id="level3Button">Level 3</button>
+        <button class="level-button" id="level4Button">Level 4</button>
+        <button class="level-button" id="level5Button">Level 5</button>
+        <button class="level-button" id="level6Button">Level 6</button>
+    </div>
+
+    <div id="questionContainer" style="display: none;margin-top:80%;">
+        <h2>Questions</h2>
+        <div id="questions"></div>
+        <button id="submitBtn">Submit</button>
+        <p id="score"></p>
+    </div>
+
+    <script>
+        const level1Questions = [
+            {
+                question: "What is the French word for 'chat'?",
+                options: ["a) Cat", "b) Dog", "c) Fish", "d) Bird"],
+                answer: "a) Cat"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) Il a un chien.", "b) Elle êtes un chat.", "c) Nous avons un poisson.", "d) Ils avons un oiseau."],
+                answer: "a) Il a un chien."
+            },
+            {
+                question: "Which of the following is a color in French?",
+                options: ["a) Run", "b) Bleu", "c) Jump", "d) Fast"],
+                answer: "b) Bleu"
+            },
+            {
+                question: "What does 'bonjour' mean?",
+                options: ["a) Goodbye", "b) Thank you", "c) Hello", "d) Yes"],
+                answer: "c) Hello"
+            },
+            {
+                question: "Fill in the blank: J'ai ___ un livre.",
+                options: ["a) suis", "b) avons", "c) a", "d) avez"],
+                answer: "c) a"
+            },
+            {
+                question: "What is the plural of 'maison'?",
+                options: ["a) Maisons", "b) Maisonnes", "c) Maisies", "d) Maisonettes"],
+                answer: "a) Maisons"
+            },
+            {
+                question: "Which word means the opposite of 'petit'?",
+                options: ["a) Grand", "b) Haut", "c) Rapide", "d) Lumineux"],
+                answer: "a) Grand"
+            },
+            {
+                question: "What is the French word for 'école'?",
+                options: ["a) House", "b) Car", "c) Tree", "d) School"],
+                answer: "d) School"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) Il peut danser.", "b) Elle peut chanter.", "c) Ils peut nager.", "d) Nous peut courir."],
+                answer: "a) Il peut danser."
+            },
+            {
+                question: "What is the correct order of words in a question in French?",
+                options: ["a) Subject - Verb - Object", "b) Object - Verb - Subject", "c) Verb - Subject - Object", "d) Subject - Object - Verb"],
+                answer: "c) Verb - Subject - Object"
+            }
+        ];
+
+        const level2Questions = [
+            {
+                question: "What is the past tense of the verb 'manger'?",
+                options: ["a) Mange", "b) Mangeant", "c) Mangé", "d) Mangée"],
+                answer: "c) Mangé"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) Je ne aime pas les pommes.", "b) Il aime danser.", "c) Nous aimer un gâteau.", "d) Vous aimons le chocolat."],
+                answer: "b) Il aime danser."
+            },
+            {
+                question: "What is the opposite of the word 'chaud'?",
+                options: ["a) Froid", "b) Chaudement", "c) Tiède", "d) Brûlant"],
+                answer: "a) Froid"
+            },
+            {
+                question: "Fill in the blank: Elle ___ au cinéma hier soir.",
+                options: ["a) Aller", "b) Vas", "c) Va", "d) Est allée"],
+                answer: "d) Est allée"
+            },
+            {
+                question: "Which sentence is in the future tense?",
+                options: ["a) Il regarde la télévision.", "b) Nous avons mangé.", "c) Ils mangent des fruits.", "d) Je mangerai un gâteau demain."],
+                answer: "d) Je mangerai un gâteau demain."
+            },
+            {
+                question: "What is the plural of 'fille'?",
+                options: ["a) Fille", "b) Filles", "c) Fil", "d) Fillesse"],
+                answer: "b) Filles"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) Je peut parler anglais.", "b) Elle pouvez danser.", "c) Nous pouvons chanter.", "d) Ils pouvons nager."],
+                answer: "c) Nous pouvons chanter."
+            },
+            {
+                question: "What does 'au revoir' mean?",
+                options: ["a) Hello", "b) Goodbye", "c) Thank you", "d) Yes"],
+                answer: "b) Goodbye"
+            },
+            {
+                question: "Which word is a synonym for 'beau'?",
+                options: ["a) Petit", "b) Grand", "c) Joli", "d) Laid"],
+                answer: "c) Joli"
+            },
+            {
+                question: "What is the correct order of words in a negative sentence in French?",
+                options: ["a) Subject - Verb - Object", "b) Verb - Object - Subject", "c) Subject - Object - Verb", "d) Subject - Ne - Verb - Pas - Object"],
+                answer: "d) Subject - Ne - Verb - Pas - Object"
+            }
+        ];
+
+        const level3Questions = [
+            {
+                question: "Which sentence uses the correct subjunctive mood?",
+                options: ["a) Je veux qu'il aller au cinéma.", "b) Il faut qu'elle finira son travail.", "c) Je doute qu'il soit ici.", "d) Ils croient qu'il ira au magasin."],
+                answer: "c) Je doute qu'il soit ici."
+            },
+            {
+                question: "Choose the correct sentence with the conditional tense:",
+                options: ["a) Il mangera une pomme.", "b) Elle mange une pomme.", "c) Il mangerait une pomme.", "d) Ils mange une pomme."],
+                answer: "c) Il mangerait une pomme."
+            },
+            {
+                question: "What is the meaning of the idiom 'coup de foudre'?",
+                options: ["a) Thunderstorm", "b) Love at first sight", "c) Strike of luck", "d) Headache"],
+                answer: "b) Love at first sight"
+            },
+            {
+                question: "Choose the correct phrasal verb to complete the sentence: Il a ___ son chien.",
+                options: ["a) Give out", "b) Give away", "c) Give off", "d) Give up"],
+                answer: "b) Give away"
+            },
+            {
+                question: "Which sentence is in the passive voice?",
+                options: ["a) Il a mangé le gâteau.", "b) Elle a écrit la lettre.", "c) Le livre a été lu par Marie.", "d) Nous avons vu le film."],
+                answer: "c) Le livre a été lu par Marie."
+            },
+            {
+                question: "What is the correct plural form of 'cheval'?",
+                options: ["a) Chevals", "b) Chevaux", "c) Chevalles", "d) Chevalux"],
+                answer: "b) Chevaux"
+            },
+            {
+                question: "Choose the correct sentence with reflexive verbs: Ils se ___ tôt le matin.",
+                options: ["a) Laver", "b) Lave", "c) Lavent", "d) Lavent"],
+                answer: "a) Laver"
+            },
+            {
+                question: "What is the meaning of the word 'séduisant'?",
+                options: ["a) Boring", "b) Charming", "c) Ugly", "d) Confusing"],
+                answer: "b) Charming"
+            },
+            {
+                question: "Which sentence is correct with the subjunctive mood?",
+                options: ["a) Je pense qu'il viendra.", "b) Il faut qu'elle chante.", "c) Nous allons au cinéma.", "d) Elle a mangé le gâteau."],
+                answer: "b) Il faut qu'elle chante."
+            },
+            {
+                question: "What is the correct order of words in a negative sentence with reflexive verbs in French?",
+                options: ["a) Subject - Verb - Reflexive Pronoun - Pas - Object", "b) Subject - Pas - Reflexive Pronoun - Verb - Object", "c) Subject - Reflexive Pronoun - Pas - Verb - Object", "d) Subject - Reflexive Pronoun - Verb - Pas - Object"],
+                answer: "d) Subject - Reflexive Pronoun - Verb - Pas - Object"
+            }
+        ];
+
+          
+        const questionContainer = document.getElementById("questionContainer");
+        const questionsDiv = document.getElementById("questions");
+        const submitBtn = document.getElementById("submitBtn");
+        const scoreDiv = document.getElementById("score");
+
+        document.getElementById("level1Button").addEventListener("click", function () {
+            displayQuestions(level1Questions);
+        });
+        document.getElementById("level2Button").addEventListener("click", function () {
+            displayQuestions(level2Questions);
+        });
+        
+        function displayQuestions(questions) {
+         document.getElementById("language").style.display = "none";
+         document.getElementById("levelsContainer").style.display = "none";
+         questionContainer.style.display = "block";
+         
+         let questionHTML = "";
+          questions.forEach((question, index) => {
+          questionHTML += `<div class="question">${question.question}</div>`;
+          question.options.forEach(option => {
+            questionHTML += `<div class="option"><input type="radio" name="question${index}" value="${option}"> ${option}</div>`;
+        });
+        questionHTML += `<br>`;
+    });
+    questionsDiv.innerHTML = questionHTML;
+    submitBtn.addEventListener("click", function () {
+            calculateScore(questions);
+        });
+}
+function calculateScore(questions) {
+            let correctAnswers = 0;
+            questions.forEach((question, index) => {
+                const selectedAnswer = document.querySelector(`input[name=question${index}]:checked`);
+                if (selectedAnswer && selectedAnswer.value === question.answer) {
+                    correctAnswers++;
+                }
+            });
+            const score = `Your score: ${correctAnswers} out of ${questions.length}`;
+            scoreDiv.textContent = score;
+        }
+
+        
+
+        
+    </script>
+</body>
+
+</html>

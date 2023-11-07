@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="levels.css">
+    <title>Level Selection</title>
+    
+</head>
+
+<body>
+    <h1 id="language" style="font-size: larger;text-align: center;">Learn English</h1>
+    <div id="levelsContainer">
+        <button class="level-button" id="level1Button">Level 1</button>
+        <button class="level-button" id="level2Button">Level 2</button>
+        <button class="level-button" id="level3Button">Level 3</button>
+        <button class="level-button" id="level4Button">Level 4</button>
+        <button class="level-button" id="level5Button">Level 5</button>
+        <button class="level-button" id="level6Button">Level 6</button>
+    </div>
+
+    <div id="questionContainer" style="display: none;margin-top:80%;">
+        <h2>Questions</h2>
+        <div id="questions"></div>
+        <button id="submitBtn">Submit</button>
+        <p id="score"></p>
+    </div>
+
+    <script>
+        const level1Questions = [
+            {
+                question: "What is the English word for 'chien' in French?",
+                options: ["a) Cat", "b) Dog", "c) Fish", "d) Bird"],
+                answer: "b) Dog"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) She is goes to school.", "b) He am play in the park.", "c) I am reading a book.", "d) They are do homework."],
+                answer: "c) I am reading a book."
+            },
+            {
+                question: "Which of the following is a color?",
+                options: ["a) Run", "b) Blue", "c) Jump", "d) Fast"],
+                answer: "b) Blue"
+            },
+            {
+                question: "What does 'hello' mean?",
+                options: ["a) Goodbye", "b) Thank you", "c) Hello", "d) Yes"],
+                answer: "c) Hello"
+            },
+            {
+                question: "Fill in the blank: I ___ a student.",
+                options: ["a) am", "b) is", "c) are", "d) be"],
+                answer: "a) am"
+            },
+            {
+                question: "What is the plural of 'cat'?",
+                options: ["a) Caties", "b) Cats", "c) Catz", "d) Catfish"],
+                answer: "b) Cats"
+            },
+            {
+                question: "Which word means the opposite of 'big'?",
+                options: ["a) Small", "b) Tall", "c) Fast", "d) Bright"],
+                answer: "a) Small"
+            },
+            {
+                question: "What is the English word for 'maison' in French?",
+                options: ["a) House", "b) Car", "c) Tree", "d) School"],
+                answer: "a) House"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) He can sings well.", "b) She can to dance.", "c) They can play soccer.", "d) I can goes home."],
+                answer: "c) They can play soccer."
+            },
+            {
+                question: "What is the correct order of words in a question?",
+                options: ["a) Subject - Verb - Object", "b) Object - Verb - Subject", "c) Verb - Subject - Object", "d) Subject - Object - Verb"],
+                answer: "c) Verb - Subject - Object"
+            }
+        ];
+        const level2Questions = [
+            {
+                question: "What is the past tense of the verb 'eat'?",
+                options: ["a) Eaten", "b) Eating", "c) Ate", "d) Eatting"],
+                answer: "c) Ate"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) She don't like coffee.", "b) He doesn't likes ice cream.", "c) I doesn't have a car.", "d) They don't have a dog."],
+                answer: "d) They don't have a dog."
+            },
+            {
+                question: "What is the opposite of the word 'happy'?",
+                options: ["a) Sad", "b) Angry", "c) Excited", "d) Joyful"],
+                answer: "a) Sad"
+            },
+            {
+                question: "Fill in the blank: We ___ to the beach last weekend.",
+                options: ["a) Go", "b) Going", "c) Goes", "d) Went"],
+                answer: "d) Went"
+            },
+            {
+                question: "Which sentence is in the present continuous tense?",
+                options: ["a) He will go to the store.", "b) She is playing in the garden.", "c) They went to the zoo.", "d) I read a book yesterday."],
+                answer: "b) She is playing in the garden."
+            },
+            {
+                question: "What is the plural of 'child'?",
+                options: ["a) Childs", "b) Children", "c) Childs'", "d) Childrens"],
+                answer: "b) Children"
+            },
+            {
+                question: "Choose the correct sentence:",
+                options: ["a) I can plays the guitar.", "b) She can to sings well.", "c) They can dance.", "d) He can swim good."],
+                answer: "c) They can dance."
+            },
+            {
+                question: "What does 'I don't mind' mean?",
+                options: ["a) I'm angry.", "b) I'm happy.", "c) It doesn't bother me.", "d) I don't care."],
+                answer: "c) It doesn't bother me."
+            },
+            {
+                question: "Which word is a synonym for 'fast'?",
+                options: ["a) Slow", "b) Quick", "c) Loud", "d) Heavy"],
+                answer: "b) Quick"
+            },
+            {
+                question: "What is the correct order of words in a negative sentence?",
+                options: ["a) Subject - Verb - Object", "b) Verb - Object - Subject", "c) Subject - Object - Verb", "d) Subject - Auxiliary Verb - Not - Main Verb"],
+                answer: "d) Subject - Auxiliary Verb - Not - Main Verb"
+            }
+        ];
+        const questionContainer = document.getElementById("questionContainer");
+        const questionsDiv = document.getElementById("questions");
+        const submitBtn = document.getElementById("submitBtn");
+        const scoreDiv = document.getElementById("score");
+
+        document.getElementById("level1Button").addEventListener("click", function () {
+            displayQuestions(level1Questions);
+        });
+        document.getElementById("level2Button").addEventListener("click", function () {
+            displayQuestions(level2Questions);
+        });
+        
+        function displayQuestions(questions) {
+         document.getElementById("language").style.display = "none";
+         document.getElementById("levelsContainer").style.display = "none";
+         questionContainer.style.display = "block";
+         
+         let questionHTML = "";
+          questions.forEach((question, index) => {
+          questionHTML += `<div class="question">${question.question}</div>`;
+          question.options.forEach(option => {
+            questionHTML += `<div class="option"><input type="radio" name="question${index}" value="${option}"> ${option}</div>`;
+        });
+        questionHTML += `<br>`;
+    });
+    questionsDiv.innerHTML = questionHTML;
+    submitBtn.addEventListener("click", function () {
+            calculateScore(questions);
+        });
+}
+function calculateScore(questions) {
+            let correctAnswers = 0;
+            questions.forEach((question, index) => {
+                const selectedAnswer = document.querySelector(`input[name=question${index}]:checked`);
+                if (selectedAnswer && selectedAnswer.value === question.answer) {
+                    correctAnswers++;
+                }
+            });
+            const score = `Your score: ${correctAnswers} out of ${questions.length}`;
+            scoreDiv.textContent = score;
+        }
+
+        
+
+        
+    </script>
+</body>
+
+</html>
